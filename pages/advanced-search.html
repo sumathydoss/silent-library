@@ -1,0 +1,73 @@
+<!-- advanced-search.html -->
+<div class="container mt-5 mb-5" data-page="advanced-search">
+  <h2 class="mb-4">Advanced Search</h2>
+  <p>Use the filters below to find eBooks in our collection that match your interests and criteria.</p>
+
+  <!-- Search Form -->
+  <form id="advancedSearchForm" class="mb-5">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="keyword" class="form-label">Keyword</label>
+        <input type="text" class="form-control" id="keyword" placeholder="Title, author, topic">
+      </div>
+      <div class="col-md-4">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category">
+          <option value="">All Categories</option>
+          <option>Fiction</option>
+          <option>Non-Fiction</option>
+          <option>Science</option>
+          <option>History</option>
+          <option>Children</option>
+          <option>Biography</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="language" class="form-label">Language</label>
+        <select class="form-select" id="language">
+          <option value="">Any</option>
+          <option>English</option>
+          <option>Chinese</option>
+          <option>Malay</option>
+          <option>Tamil</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-4">
+        <label for="format" class="form-label">Format</label>
+        <select class="form-select" id="format">
+          <option value="">Any</option>
+          <option>PDF</option>
+          <option>EPUB</option>
+          <option>MP3 (Audiobook)</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="availability" class="form-label">Availability</label>
+        <select class="form-select" id="availability">
+          <option value="">All</option>
+          <option>Available Now</option>
+          <option>Checked Out</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="year" class="form-label">Publication Year</label>
+        <input type="number" class="form-control" id="year" placeholder="e.g. 2022">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary px-4">Search</button>
+      <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+    </div>
+  </form>
+
+  <!-- Search Results -->
+  <div id="searchResults">
+    <h4 class="mb-3">Search Results</h4>
+    <p class="text-muted">Results will appear here after searching.</p>
+    <!-- You can dynamically append cards or table rows here with JavaScript -->
+  </div>
+</div>
