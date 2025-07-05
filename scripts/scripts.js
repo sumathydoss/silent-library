@@ -77,14 +77,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-   function loadPage(page) {
-      fetch(`pages/${page}.html`)
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('content-area').innerHTML = data;
-           window.scrollTo(0, 0); // scroll to top
-        });
-    }
+
+
+function loadPage(page, addToHistory = true) {
+  fetch(`pages/${page}.html`)
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('content-area').innerHTML = data;
+
+      // Update URL without reloading the page
+      if (addToHistory) {
+        history.pushState({ page: page }, '', `#${page}`);
+      }
+
+      // Scroll to top when loading new page
+      window.scrollTo(0, 0);
+    });
+}
+
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    loadPage(event.state.page, false); // don't push history again
+  }
+});
+
+
 
     // Load Home on first load
     window.onload = () => loadPage('home');

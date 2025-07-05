@@ -21,6 +21,10 @@ h1 { font-size: 32px; }
 h2 { font-size: 24px; }
 h3 { font-size: 20px; }
 
+footer {
+  margin-top: auto;
+}
+
 .caption {
   font-size: 14px;
 }
@@ -142,7 +146,9 @@ a:hover {
   height: 300px;          /* You can adjust this height as needed */
   object-fit: cover;
 }
-
+.card[data-page] {
+  cursor: pointer;
+}
 
 /* For homepage Explore more section */
 .explore-img {
