@@ -79,24 +79,34 @@ a:hover {
     }
 
     /* For Carousel Prev Next buttons  */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-image: none;
-  width: 4rem;
-  height: 4rem;
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%; /* Reduce button width */
+  top: 50%;
+   transform: translateY(-50%); 
+  z-index: 10;
+  /* transform: scale(1.5); makes icon larger */
+  filter: invert(0%) brightness(0%) contrast(200%); /* makes it darker and stronger */
+
 }
 
-.carousel-control-prev::after {
-  content: '\2039'; /* ‹ */
-  color: black;
-  font-size: 5.5rem;
+@media (max-width: 991.98px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: auto;
+    bottom: 10px;
+    transform: none;
+    
+  }
+}
+.carousel-control-prev {
+  left: 10px;
 }
 
-.carousel-control-next::after {
-  content: '\203A'; /* › */
-  color: black;
-  font-size: 5.5rem;
+.carousel-control-next {
+  right: 10px;
 }
+
 
 .banner {
       background-color: #1D3557;
