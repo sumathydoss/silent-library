@@ -250,6 +250,19 @@ a:hover {
   text-align: center;
   height: 100%;
 }
+/* ===========================
+  Events highlight section
+  =========================== */
+#highlight-section {
+  min-height: 200px;
+}
+
+/* ===========================
+  Trendng & Popular Books  section
+  =========================== */
+#trending-section {
+  min-height: 200px;
+}
 
 /* ===========================
   Search Bar
