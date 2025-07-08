@@ -104,7 +104,13 @@ window.addEventListener('popstate', (event) => {
 
 
     // Load Home on first load
-    window.onload = () => loadPage('home');
+    // window.onload = () => loadPage('home');
+
+// $(function () {
+//   $('#content-area').html('<div class="skeleton"></div>'); // optional skeleton
+//   loadPage('home'); // load main content
+   
+// });
 
     document.addEventListener('click', function (e) {
   const target = e.target.closest('[data-page]');
@@ -113,3 +119,33 @@ window.addEventListener('popstate', (event) => {
     loadPage(target.getAttribute('data-page'));
   }
 });
+
+
+ $(document).ready(function () {
+    // Highlight active nav item
+    $('.nav-link').on('click', function () {
+      $('.nav-link').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    // Toggle search bar visibility
+    $('#searchIcon').on('click', function (e) {
+      e.preventDefault();
+      $('#searchBar').removeClass('d-none').hide().fadeIn();
+    });
+
+    $('#closeSearch').on('click', function () {
+      $('#searchBar').fadeOut(function () {
+        $(this).addClass('d-none');
+      });
+    });
+
+    // Optional: Close search bar on outside click
+    $(document).on('click', function (e) {
+      if (!$(e.target).closest('#searchBar, #searchIcon').length) {
+        $('#searchBar').fadeOut(function () {
+          $(this).addClass('d-none');
+        });
+      }
+    });
+  });

@@ -145,9 +145,12 @@ a:hover {
     .navbar-custom .navbar-brand {
       color: white;
     }
-    .navbar-custom .nav-link:hover {
-      color: #F1FAEE;
-    }
+   
+    .navbar-custom .navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: #bdb9e2;
+  text-decoration: underline;
+}
 
     /* for hompagebooks images*/
  
@@ -174,11 +177,6 @@ a:hover {
   flex-direction: column;
   justify-content: start;
 }
-
-/* For Trending and polular  section */
-
-
-
 
 /* for books.html thumbnails */
 .book-thumbnail {
@@ -241,3 +239,4 @@ a:hover {
     opacity: 1;
     transform: scaleY(1);
   }
+
