@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   // Carousel Functionality
   // =========================
-  const slides = document.querySelectorAll('.carousel-slide');
+  const slides = document.querySelectorAll('.carousel-inner');
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
   let currentIndex = 0;
