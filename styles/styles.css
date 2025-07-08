@@ -1,17 +1,19 @@
+/* ===========================
+  Base Styles
+  =========================== */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
-  html, body {
-      margin: 0;
-      padding: 0;
-     
-    }
-section h2 {
-  margin-top: 0 !important;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
+/* ===========================
+  Typography
+  =========================== */
 h1, h2, h3 {
   font-family: 'Merriweather', serif;
   font-weight: bold;
@@ -21,14 +23,17 @@ h1 { font-size: 32px; }
 h2 { font-size: 24px; }
 h3 { font-size: 20px; }
 
-footer {
-  margin-top: auto;
+section h2 {
+  margin-top: 0 !important;
 }
 
 .caption {
   font-size: 14px;
 }
 
+/* ===========================
+  Links & Buttons
+  =========================== */
 a {
   text-decoration: none;
   transition: color 0.3s ease;
@@ -47,7 +52,6 @@ a:hover {
   background-color: #16324F;
 }
 
-
 .cta-button {
   background-color: #F1FAEE;
   color: #1D3557;
@@ -64,41 +68,43 @@ a:hover {
   background-color: #e6f0ec;
 }
 
+/* ===========================
+  Carousel Styles
+  =========================== */
+.carousel-item {
+  background-color: #d1dff2;
+  color: white;
+  padding: 10px 0;
+}
 
-  .carousel-item {
-      background-color: #d1dff2;
-      color: white;
-      padding: 10px 0;
-    }
-    .carousel-item .btn {
-      background-color: #1D3557;
-      color: #ffffff;
-    }
-    .carousel-item .btn:hover {
-      background-color: #7ca2d8;
-    }
+.carousel-item .btn {
+  background-color: #1D3557;
+  color: #ffffff;
+}
 
-    /* For Carousel Prev Next buttons  */
+.carousel-item .btn:hover {
+  background-color: #7ca2d8;
+}
+
+/* Carousel Prev/Next Buttons */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 5%; /* Reduce button width */
+  width: 5%;
   top: 50%;
-   transform: translateY(-50%); 
+  transform: translateY(-50%);
   z-index: 10;
-  /* transform: scale(1.5); makes icon larger */
-  filter: invert(0%) brightness(0%) contrast(200%); /* makes it darker and stronger */
-
+  filter: invert(0%) brightness(0%) contrast(200%);
 }
 
 @media (max-width: 991.98px) {
   .carousel-control-prev,
   .carousel-control-next {
-    top: auto;
-    bottom: 10px;
-    transform: none;
-    
+   top: auto;
+   bottom: 10px;
+   transform: none;
   }
 }
+
 .carousel-control-prev {
   left: 10px;
 }
@@ -107,63 +113,76 @@ a:hover {
   right: 10px;
 }
 
-
+/* ===========================
+  Banner Styles
+  =========================== */
 .banner {
-      background-color: #1D3557;
-      color: white;
-      padding: 60px 30px;
-      text-align: center;
-    }
-    .banner h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-    .banner p {
-      font-size: 1.2em;
-      color: #d1dbe9;
-      margin-bottom: 30px;
-    }
-    .banner .cta-button {
-      background-color: #F1FAEE;
-      color: #1D3557;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1em;
-      font-weight: 500;
-      border-radius: 24px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .banner .cta-button:hover {
-      background-color: #e6f0ec;
-    }
+  background-color: #1D3557;
+  color: white;
+  padding: 60px 30px;
+  text-align: center;
+}
 
-     .navbar-custom {
-      background-color: #0F2E5A;
-    }
-    .navbar-custom .nav-link,
-    .navbar-custom .navbar-brand {
-      color: white;
-    }
-   
-    .navbar-custom .navbar-nav .nav-link.active,
+.banner h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1.2em;
+  color: #d1dbe9;
+  margin-bottom: 30px;
+}
+
+.banner .cta-button {
+  background-color: #F1FAEE;
+  color: #1D3557;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner .cta-button:hover {
+  background-color: #e6f0ec;
+}
+
+/* ===========================
+  Navbar Styles
+  =========================== */
+.navbar-custom {
+  background-color: #0F2E5A;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+  color: white;
+}
+
+.navbar-custom .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
   color: #bdb9e2;
   text-decoration: underline;
 }
 
-    /* for hompagebooks images*/
- 
+/* ===========================
+  Card & Image Styles
+  =========================== */
+/* Homepage books images */
 .card-img-top {
   width: 100%;
-  height: 300px;          /* You can adjust this height as needed */
+  height: 300px;
   object-fit: cover;
 }
+
 .card[data-page] {
   cursor: pointer;
 }
 
-/* For homepage Explore more section */
+/* Homepage Explore more section */
 .explore-img {
   width: 100%;
   height: 180px;
@@ -178,33 +197,39 @@ a:hover {
   justify-content: start;
 }
 
-/* for books.html thumbnails */
+/* Books.html thumbnails */
 .book-thumbnail {
-   width: 100%;
+  width: 100%;
   height: 220px;
   object-fit: cover;
   border-radius: 4px;
 }
- .book-row {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-    .book-card {
-      min-width: 190px;
-      flex: 0 0 auto;
-    }
-    .book-card img {
-      height: 220px;
-      object-fit: cover;
-    }
-    .btn-disabled {
-      pointer-events: none;
-      opacity: 0.6;
-    }
 
-/* For homepage Events section */
+.book-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.book-card {
+  min-width: 190px;
+  flex: 0 0 auto;
+}
+
+.book-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ===========================
+  Events Section
+  =========================== */
 .events-img-wrapper {
   height: 180px;
   overflow: hidden;
@@ -226,17 +251,25 @@ a:hover {
   height: 100%;
 }
 
-/* for search bar */
- #searchBar {
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
+/* ===========================
+  Search Bar
+  =========================== */
+#searchBar {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-  #searchBar.show {
-    display: block !important;
-    opacity: 1;
-    transform: scaleY(1);
-  }
+#searchBar.show {
+  display: block !important;
+  opacity: 1;
+  transform: scaleY(1);
+}
 
+/* ===========================
+  Footer
+  =========================== */
+footer {
+  margin-top: auto;
+}
