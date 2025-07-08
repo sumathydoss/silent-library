@@ -101,7 +101,7 @@
   </main>
 
   <!-- Footer -->
-  <footer id="footer-area" class="bg-dark text-white mt-5 pt-4 pb-3" style="min-height: 150px;">
+  <footer id="footer-area" class="bg-dark text-white mt-5 pt-4 pb-3" style="min-height: 150px; visibility: hidden;">
 
 
     <div class="container">
@@ -171,7 +171,7 @@
     })
     .then(html => {
       document.getElementById('content-area').innerHTML = html;
-      document.getElementById('footer-area').style.display = 'block'; // show footer only after content is ready
+     document.getElementById('footer-area').style.visibility = 'visible';// show footer only after content is ready
     })
     .catch(error => {
       console.error('Failed to load home.html:', error);
