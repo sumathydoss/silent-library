@@ -100,24 +100,9 @@
     <!-- Content will load here -->
   </main>
 
-  <!-- Load Initial Home Page -->
-<script>
-  document.write('<div id="content-area" class="container-fluid p-0"></div>');
-
-  // Force synchronous content load (blocking)
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'pages/home.html', false); // false = synchronous
-  xhr.send(null);
-
-  if (xhr.status === 200) {
-    document.getElementById('content-area').innerHTML = xhr.responseText;
-  } else {
-    document.getElementById('content-area').innerHTML = '<p>Error loading home page.</p>';
-  }
-</script>
-
   <!-- Footer -->
-  <footer class="bg-dark text-white mt-5 pt-4 pb-3">
+  <footer  class="bg-dark text-white mt-5 pt-4 pb-3" id="footer-area">
+
     <div class="container">
       <div class="row text-center text-md-start">
 
@@ -173,7 +158,26 @@
     </div>
   </footer>
 
-
+<!-- Load Initial Home Page -->
+<script>
+  // Fetch and load home.html into main
+  fetch('pages/home.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('content-area').innerHTML = html;
+      document.getElementById('footer-area').style.display = 'block'; // show footer only after content is ready
+    })
+    .catch(error => {
+      console.error('Failed to load home.html:', error);
+      document.getElementById('content-area').innerHTML = '<p>Error loading content.</p>';
+      document.getElementById('footer').style.display = 'block';
+    });
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scripts/scripts.js"></script>
