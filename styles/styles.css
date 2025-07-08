@@ -312,5 +312,12 @@ a:hover {
 footer {
   margin-top: auto;
 }
-
+.footer-touch-link {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-bottom: 2px;
+  font-size: 1rem;
+  min-width: 48px;
+  min-height: 28px;
+}
 
