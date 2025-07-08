@@ -172,6 +172,27 @@ a:hover {
   height: auto !important;
 }
 
+/* ===========================
+  See All link  Styles
+  ===========================   */
+.see-all-link {
+  color: #000; /* dark black */
+  font-weight: 700; /* bold */
+  font-size: 1.25rem; /* larger text */
+  text-transform: capitalize;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.see-all-link:hover {
+  color: #0056b3; /* darker blue on hover */
+  text-shadow: 2px 2px 4px rgba(0, 86, 179, 0.4);
+  cursor: pointer;
+}
+
+
 
 /* ===========================
   Card & Image Styles
