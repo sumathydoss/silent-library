@@ -87,22 +87,25 @@
 
 
         <!-- Search input with icon -->
-        <div class="row g-2 mb-3">
-          <div class="col-12 col-sm-1 d-flex align-items-center justify-content-start">
-            <span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
-          </div>
-          <div class="col-12 col-sm-7">
-            <input type="text" class="form-control" placeholder="Search books by Title, author, topic..." />
-          </div>
-          <div class="col-6 col-sm-2">
-            <button class="btn btn-primary w-100" type="button" id="searchBtn">Search</button>
-          </div>
-          <div class="col-6 col-sm-2">
-            <button class="btn btn-outline-secondary w-100" type="button" id="closeSearch">
-              <i class="bi bi-x-lg"></i>
-            </button>
-          </div>
-        </div>
+<div class="row g-2 mb-3">
+  <div class="col-12 col-sm-1 d-flex align-items-center justify-content-start">
+    <span class="input-group-text bg-white border-0"><i class="bi bi-search"></i></span>
+  </div>
+  <div class="col-12 col-sm-7">
+    <input type="text" class="form-control" placeholder="Search books by Title, author, topic..." aria-label="Search books input field" />
+  </div>
+  <div class="col-6 col-sm-2">
+    <button class="btn btn-primary w-100" type="button" id="searchBtn" aria-label="Search books">
+      Search
+    </button>
+  </div>
+  <div class="col-6 col-sm-2">
+    <button class="btn btn-outline-secondary w-100" type="button" id="closeSearch" aria-label="Close search bar">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>
+
 
 
         <!-- Advanced Search link -->
