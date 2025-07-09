@@ -140,24 +140,30 @@
     </div>
 
     <!-- Controls inside the same carousel container -->
+    <!-- Prev Button with Tooltip -->
     <button
-      class="carousel-control-prev"
+      class="carousel-nav carousel-control-prev fade-arrow"
       type="button"
       data-bs-target="#silentLibraryCarousel"
       data-bs-slide="prev"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Previous Slide"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
     </button>
 
+    <!-- Next Button with Tooltip -->
     <button
-      class="carousel-control-next"
+      class="carousel-nav carousel-control-next fade-arrow"
       type="button"
       data-bs-target="#silentLibraryCarousel"
       data-bs-slide="next"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Next Slide"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
     </button>
   </div>
 </section>

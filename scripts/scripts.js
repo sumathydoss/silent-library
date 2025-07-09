@@ -38,6 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentIndex);
   }
 
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.querySelector('#silentLibraryCarousel');
+  if (!carousel) return;
+
+  carousel.addEventListener('mousemove', function (e) {
+    const rect = carousel.getBoundingClientRect();
+    const width = rect.width;
+    const x = e.clientX - rect.left;
+
+    const instance = bootstrap.Carousel.getOrCreateInstance(carousel);
+
+    if (x < width * 0.2) {
+      instance.prev(); // Hover left
+    } else if (x > width * 0.8) {
+      instance.next(); // Hover right
+    }
+  });
+
+  // Tooltip activation
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
+  });
+});
+
+
+
   // =========================
   // Search Bar Functionality
   // =========================

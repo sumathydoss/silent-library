@@ -96,6 +96,13 @@ a:hover {
   filter: invert(0%) brightness(0%) contrast(200%);
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 4rem;
+  height: 4rem;
+  background-size: 100% 100%;
+}
+
 @media (max-width: 991.98px) {
   .carousel-control-prev,
   .carousel-control-next {
@@ -106,12 +113,30 @@ a:hover {
 }
 
 .carousel-control-prev {
-  left: 10px;
+  left: 30px;
 }
 
 .carousel-control-next {
-  right: 10px;
+  right: 30px;
 }
+  
+
+/* Base style: hidden by default */
+.fade-arrow {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+/* Show arrows only when hovering over carousel */
+#silentLibraryCarousel:hover .fade-arrow {
+  opacity: 1;
+}
+
+/* Optional: shrink width for tighter control position */
+.carousel-nav {
+  width: 4%;
+}
+
 
 /* ===========================
   Banner Styles
@@ -175,8 +200,10 @@ header {
 
 .navbar-custom .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
-  color: #bdb9e2;
-  text-decoration: underline;
+  color: #d9d6f8;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: none;
 }
 
 #navbarNav.collapsing {
