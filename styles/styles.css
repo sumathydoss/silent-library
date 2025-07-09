@@ -150,6 +150,17 @@ a:hover {
   background-color: #e6f0ec;
 }
 
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* higher than other elements like carousels or banners */
+  background-color: white; /* optional: ensures it doesn't become transparent */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional: adds subtle shadow */
+}
+
+
 /* ===========================
   Navbar Styles
   =========================== */
