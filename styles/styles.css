@@ -321,3 +321,9 @@ footer {
   min-height: 28px;
 }
 
+/* ===========================
+  Add Pointer to all [data-page] elements
+  ===========================  */
+[data-page] {
+  cursor: pointer;
+}
