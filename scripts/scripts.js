@@ -1,29 +1,29 @@
 // Wait for the DOM to be fully loaded before running scripts
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // =========================
   // Carousel Functionality
   // =========================
-  const slides = document.querySelectorAll(".carousel-inner");
-  const prevBtn = document.querySelector(".carousel-btn.prev");
-  const nextBtn = document.querySelector(".carousel-btn.next");
+  const slides = document.querySelectorAll('.carousel-inner');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
   let currentIndex = 0;
 
   // Show the slide at the given index and hide others
   function showSlide(index) {
     slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
+      slide.classList.toggle('active', i === index);
     });
   }
 
   if (prevBtn && nextBtn && slides.length > 0) {
     // Show previous slide on prev button click
-    prevBtn.addEventListener("click", () => {
+    prevBtn.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
     });
 
     // Show next slide on next button click
-    nextBtn.addEventListener("click", () => {
+    nextBtn.addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     });
@@ -38,11 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(currentIndex);
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector("#silentLibraryCarousel");
-    if (!carousel) return;
-
-    carousel.addEventListener("mousemove", function (e) {
+  // =========================
+  // Bootstrap Carousel Functionality
+  // =========================
+  const carousel = document.querySelector('#silentLibraryCarousel');
+  if (carousel) {
+    carousel.addEventListener('mousemove', function (e) {
       const rect = carousel.getBoundingClientRect();
       const width = rect.width;
       const x = e.clientX - rect.left;
@@ -55,56 +56,61 @@ document.addEventListener("DOMContentLoaded", () => {
         instance.next(); // Hover right
       }
     });
+  }
 
-    // Tooltip activation
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-      new bootstrap.Tooltip(el);
-    });
+  // Tooltip activation
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el);
   });
 
   // =========================
   // Search Bar Functionality
   // =========================
-  const searchIcon = document.getElementById("searchIcon");
-  const searchBar = document.getElementById("searchBar");
-  const closeSearch = document.getElementById("closeSearch");
-  const searchBtn = document.getElementById("searchBtn");
-  const advancedSearchLink = document.querySelector(
-    '[data-page="advanced-search"]'
-  );
+  const searchIcon = document.getElementById('searchIcon');
+  const searchBar = document.getElementById('searchBar');
+  const closeSearch = document.getElementById('closeSearch');
+  const searchBtn = document.getElementById('searchBtn');
+  const advancedSearchLink = document.querySelector('[data-page="advanced-search"]');
 
   if (searchIcon && searchBar && closeSearch) {
     // Show search bar on search icon click
-    searchIcon.addEventListener("click", () => {
-      searchBar.classList.add("show");
-      searchBar.classList.remove("d-none");
+    searchIcon.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevent default anchor behavior
+      e.stopPropagation(); // Stop event bubbling
+      searchBar.classList.add('show');
+      searchBar.classList.remove('d-none');
     });
 
     // Hide search bar on close button click
-    closeSearch.addEventListener("click", () => {
-      searchBar.classList.remove("show");
-      searchBar.classList.add("d-none");
+    closeSearch.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      searchBar.classList.remove('show');
+      searchBar.classList.add('d-none');
     });
 
     // Hide search bar on search button click (can trigger search here)
     if (searchBtn) {
-      searchBtn.addEventListener("click", () => {
-        searchBar.classList.remove("show");
-        searchBar.classList.add("d-none");
+      searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        searchBar.classList.remove('show');
+        searchBar.classList.add('d-none');
         // Optional: trigger search action here
       });
     }
 
     // Advanced search link click handler
     if (advancedSearchLink) {
-      advancedSearchLink.addEventListener("click", (e) => {
+      advancedSearchLink.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent default anchor behavior
-        searchBar.classList.remove("show");
-        searchBar.classList.add("d-none");
-        if (typeof loadPage === "function") {
-          loadPage("advanced-search");
+        e.stopPropagation();
+        searchBar.classList.remove('show');
+        searchBar.classList.add('d-none');
+        if (typeof loadPage === 'function') {
+          loadPage('advanced-search');
         } else {
-          window.location.href = "pages/advanced-search.html";
+          window.location.href = 'pages/advanced-search.html';
         }
       });
     }
@@ -118,18 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // Loads a page into the content area via AJAX and updates browser history
 function loadPage(page, addToHistory = true) {
   fetch(`pages/${page}.html`)
-    .then((res) => res.text())
-    .then((data) => {
-      
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('content-area').innerHTML = data;
 
-      // Skip highlighting nav link if it's the search page
-      if (page !== 'search') {
-        setActiveNavLink(page);
-      }
-document.getElementById("content-area").innerHTML = data;
       // Update URL without reloading the page
       if (addToHistory) {
-        history.pushState({ page: page }, "", `#${page}`);
+        history.pushState({ page: page }, '', `#${page}`);
       }
 
       // Scroll to top when loading new page
@@ -138,48 +139,39 @@ document.getElementById("content-area").innerHTML = data;
 }
 
 // Handle browser back/forward navigation
-window.addEventListener("popstate", (event) => {
+window.addEventListener('popstate', (event) => {
   if (event.state && event.state.page) {
     loadPage(event.state.page, false); // Don't push history again
   }
 });
 
 // Handle clicks on elements with [data-page] attribute to load pages dynamically
-document.addEventListener("click", function (e) {
-  const target = e.target.closest("[data-page]");
-  if (target) {
+// IMPORTANT: Exclude search icon from this handler
+document.addEventListener('click', function (e) {
+  const target = e.target.closest('[data-page]');
+  // Skip if this is the search icon
+  if (target && target.id !== 'searchIcon') {
     e.preventDefault();
-    loadPage(target.getAttribute("data-page"));
+    loadPage(target.getAttribute('data-page'));
   }
 });
 
-function setActiveNavLink(page) {
-  $('.nav-link').removeClass('active');
-  $(`.nav-link[data-page="${page}"]`).addClass('active');
-}
-
 // =========================
-// jQuery Enhancements for Menu navigation and Search
+// jQuery Enhancements
 // =========================
 $(document).ready(function () {
-  // Highlight active nav item on click
-  $(".nav-link").on("click", function () {
-    $(".nav-link").removeClass("active");
-    $(this).addClass("active");
+  // Highlight active nav item on click (but not for search icon)
+  $('.nav-link:not(#searchIcon)').on('click', function () {
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
   });
 
-  // Show search bar with fade-in effect
-  $("#searchIcon").on("click", function (e) {
-    e.preventDefault();
-    $("#searchBar").fadeIn();
-    // $('#searchBar').removeClass('d-none').hide().fadeIn();
-  });
-
-  // Hide search bar with fade-out effect on close button click
-  $("#closeSearch").on("click", function () {
-    $("#searchBar").fadeOut(function () {
-      $(this).addClass("d-none");
-      $(".nav-link").removeClass("active");
-    });
+  // Hide search bar when clicking outside of it or the search icon
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('#searchBar, #searchIcon').length) {
+      $('#searchBar').fadeOut(function () {
+        $(this).addClass('d-none').removeClass('show');
+      });
+    }
   });
 });
